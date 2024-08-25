@@ -14,19 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
+// =================================
 
 // popup-form
 const openForm = document.querySelector(".openForm");
@@ -47,21 +39,11 @@ addBooks.addEventListener("click", function () {
   popup.classList.add("hidden");
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
+// =================================
 
 // input data book
 function addBook() {
@@ -93,30 +75,23 @@ function addBook() {
     form.reset();
   }
 }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+// =================================
+
+// =================================
+
+// =================================
 
 // generate id
 function generateId() {
   return +new Date();
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
+// =================================
 
 // generate object
 function generateBookObject(id, title, author, year, check) {
@@ -129,21 +104,6 @@ function generateBookObject(id, title, author, year, check) {
   };
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 const bookList = [];
 const RENDER_EVENT = "render-book";
 
@@ -151,23 +111,12 @@ document.addEventListener(RENDER_EVENT, function () {
   console.log(bookList);
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
 
-//
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
 const updateInfo = (filteredBooks, searchValue) => {
   const infoElement = document.getElementById("info");
 
@@ -182,13 +131,12 @@ const updateInfo = (filteredBooks, searchValue) => {
     searchValue +
     "'";
 };
-//
-//
-//
-//
-//
-//
-//
+
+// =================================
+
+// =================================
+
+// =================================
 
 const search = (value) => {
   const filteredBooks = bookList.filter(
@@ -209,11 +157,11 @@ const search = (value) => {
   console.log("Completed Books:", completedBooks);
 };
 
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
+// =================================
 
 // Fungsi untuk menangani pencarian saat tombol klik
 const changeSearch = () => {
@@ -223,19 +171,11 @@ const changeSearch = () => {
 };
 document.getElementById("searchTitle").addEventListener("input", changeSearch);
 
-//
-//
-//
-//
-//
-//
+// =================================
 
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
 
 const renderSearchResults = (uncompletedBooks, completedBooks) => {
   const uncompletedBookList = document.getElementById("uncompleted");
@@ -254,25 +194,12 @@ const renderSearchResults = (uncompletedBooks, completedBooks) => {
     uncompletedBookList.append(bookElement);
   });
 };
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+// =================================
+
+// =================================
+
+// =================================
 
 // simpan buku
 function createList(addObject) {
@@ -297,6 +224,14 @@ function createList(addObject) {
   container.append(textContainer);
   container.setAttribute("id", addObject.id);
 
+  // tombol hapus buku (delete)
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+
+  deleteButton.addEventListener("click", function () {
+    removeBookFromCompleted(addObject.id);
+  });
+
   // setelah pencet tombol form setelah selesai baca
   if (addObject.check) {
     // tombol saat submit tp belum selesai baca (undo)
@@ -305,14 +240,6 @@ function createList(addObject) {
 
     uncompletedButton.addEventListener("click", function () {
       undoBookFromCompleted(addObject.id);
-    });
-
-    // tombol hapus buku (delete)
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-
-    deleteButton.addEventListener("click", function () {
-      removeBookFromCompleted(addObject.id);
     });
 
     container.append(uncompletedButton, deleteButton);
@@ -327,31 +254,17 @@ function createList(addObject) {
       addBookToCompleted(addObject.id);
     });
 
-    container.append(completedButton);
+    container.append(completedButton, deleteButton);
   }
 
   return container;
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
+
+// =================================
+
+// =================================
 
 // fungsi memindahkan buku ke selesai baca
 function addBookToCompleted(bookId) {
@@ -417,36 +330,11 @@ function searchBook(bookTitle) {
   return null;
 }
 
-//
-//
-//
+// =================================
 
-//
-//
-//
+// =================================
 
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// =================================
 
 // selesai baca
 
@@ -464,30 +352,11 @@ document.addEventListener(RENDER_EVENT, function () {
   }
 });
 
-//
-//
-//
-//
+// =================================
 
-//
-//
-//
+// =================================
 
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
+// =================================
 
 // save data local storage
 function saveData() {
@@ -511,7 +380,6 @@ function isStorageExist() /* boolean */ {
 
 document.addEventListener(SAVED_EVENT, function () {
   console.log(localStorage.getItem(STORAGE_KEY));
-  // alert('Berhasil Menyimpan');
 });
 
 function loadDataFromStorage() {
