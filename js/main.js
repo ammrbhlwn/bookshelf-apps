@@ -205,16 +205,20 @@ const renderSearchResults = (uncompletedBooks, completedBooks) => {
 function createList(addObject) {
   const textTitle = document.createElement("h2");
   textTitle.innerText = addObject.title;
+  textTitle.setAttribute("data-testid", "bookItemTitle");
 
   const textAuthor = document.createElement("p");
   textAuthor.innerText = "Penulis : " + addObject.author;
+  textTitle.setAttribute("data-testid", "bookItemAuthor");
 
   const textYear = document.createElement("p");
   textYear.innerText = "Tahun terbit : " + addObject.year;
+  textTitle.setAttribute("data-testid", "bookItemYear");
 
   // membuat susunan layout
   const textContainer = document.createElement("div");
   textContainer.classList.add("inner");
+  textContainer.setAttribute("data-testid", "bookItem");
 
   //membuat card list
   textContainer.append(textTitle, textAuthor, textYear);
@@ -227,6 +231,7 @@ function createList(addObject) {
   // tombol hapus buku (delete)
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
+  deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
 
   deleteButton.addEventListener("click", function () {
     removeBookFromCompleted(addObject.id);
@@ -237,6 +242,7 @@ function createList(addObject) {
     // tombol saat submit tp belum selesai baca (undo)
     const uncompletedButton = document.createElement("button");
     uncompletedButton.classList.add("uncompleted-button");
+    uncompletedButton.setAttribute("data-testid", "bookItemIsCompleteButton");
 
     uncompletedButton.addEventListener("click", function () {
       undoBookFromCompleted(addObject.id);
@@ -249,6 +255,7 @@ function createList(addObject) {
   else {
     const completedButton = document.createElement("button");
     completedButton.classList.add("completed-button");
+    completedButton.setAttribute("data-testid", "bookItemIsCompleteButton");
 
     completedButton.addEventListener("click", function () {
       addBookToCompleted(addObject.id);
