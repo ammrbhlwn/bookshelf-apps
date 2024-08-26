@@ -13,112 +13,105 @@
       <h1>Bookshelf Apps</h1>
     </header>
 
-    <div class="content">
-      <!-- tombol search -->
-      <div class="searchContainer">
-        <div id="search" class="search" data-testid="searchBookForm">
-          <img class="iconSearch" src="assets/icons/icons8-search-500.svg" />
-          <input
-            id="searchTitle"
-            class="inputSearch"
-            placeholder="Cari buku anda..."
-            required
-            onChange="changeSearch()"
-            data-testid="searchBookFormTitleInput"
-          />
-          <button
-            id="buttonSearch"
-            class="buttonSearch"
-            onClick="changeSearch()"
-            data-testid="searchBookFormSubmitButton"
-          >
-            Cari
-          </button>
-        </div>
-        <small class="info" id="info"></small>
-      </div>
-
-      <!-- belum selesai -->
-      <div class="container">
-        <h2>Belum selesai dibaca</h2>
-        <div
-          class="list-item"
-          id="uncompleted"
-          data-testid="incompleteBookList"
-        ></div>
-      </div>
-
-      <!-- sudah selesai -->
-      <div class="container">
-        <h2>Selesai dibaca</h2>
-        <div
-          class="list-item"
-          id="completed"
-          data-testid="completeBookList"
-        ></div>
-      </div>
-
+    <main class="content">
       <!-- form buku -->
-      <div class="book-form" id="book-form" data-testid="bookForm">
-        <h2>Tambahkan Buku Baru</h2>
+      <section class="addBook">
+        <h2>Tambah Buku Baru</h2>
 
-        <form class="form" action="#" id="form">
+        <form id="bookForm" data-testid="bookForm" class="bookForm">
           <div class="input">
-            <label for="title">Judul</label>
+            <label for="bookFormTitle">Judul</label>
             <input
               type="text"
-              id="addTitle"
+              id="bookFormTitle"
               required
               data-testid="bookFormTitleInput"
             />
           </div>
 
           <div class="input">
-            <label for="author">Penulis</label>
+            <label for="bookFormAuthor">Penulis</label>
             <input
+              id="bookFormAuthor"
               type="text"
-              id="addAuthor"
               required
               data-testid="bookFormAuthorInput"
             />
           </div>
 
           <div class="input">
-            <label for="year">Tahun</label>
+            <label for="bookFormYear">Tahun</label>
             <input
-              type="text"
-              inputmode="numeric"
-              id="addYear"
+              id="bookFormYear"
+              type="number"
               required
               data-testid="bookFormYearInput"
             />
           </div>
 
           <div class="input">
-            <label for="complete"
+            <label for="bookFormIsComplete"
               >Selesai dibaca
               <span
                 ><input
+                  id="bookFormIsComplete"
                   type="checkbox"
-                  id="checked"
                   data-testid="bookFormIsCompleteCheckbox" /></span
             ></label>
           </div>
 
           <button
-            id="bookSubmit"
+            id="bookFormSubmit"
             type="submit"
-            class="button-submit"
             data-testid="bookFormSubmitButton"
+            class="button-submit"
           >
-            Tambahkan Buku <span>Belum selesai dibaca</span>
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+      <!-- tombol search -->
+      <section class="searchContainer">
+        <h2>Cari Buku</h2>
+        <form id="searchBook" data-testid="searchBookForm" class="search">
+          <label for="searchBookTitle">Judul</label>
+          <input
+            id="searchBookTitle"
+            type="text"
+            data-testid="searchBookFormTitleInput"
+            class="inputSearch"
+          />
+          <button
+            id="searchSubmit"
+            data-testid="searchBookFormSubmitButton"
+            class="buttonSearch"
+            onClick="changeSearch()"
+          >
+            Cari
+          </button>
+        </form>
+      </section>
 
-    <!-- form isian -->
-    <button class="openForm">+</button>
+      <!-- belum selesai -->
+      <section class="bookContainer">
+        <h2>Belum selesai dibaca</h2>
+        <div
+          id="incompleteBookList"
+          data-testid="incompleteBookList"
+          class="list-item"
+        ></div>
+      </section>
+
+      <!-- sudah selesai -->
+      <section class="bookContainer">
+        <h2>Selesai dibaca</h2>
+        <div
+          id="completeBookList"
+          data-testid="completeBookList"
+          class="list-item"
+        ></div>
+      </section>
+    </main>
 
     <script src="js/main.js" type="text/javascript"></script>
   </body>
